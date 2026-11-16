@@ -33,9 +33,6 @@ public class ExampleConstants {
   public static final double KV = 0.12;
 
   // --- Setpoints ---
-  /** Speed in motor rotations per second while the RUNNING state is active. */
-  public static final double RUNNING_VELOCITY_RPS = 30;
-
   /** Speed in motor rotations per second while ExampleCommand runs. */
   public static final double COMMAND_VELOCITY_RPS = 15;
 }

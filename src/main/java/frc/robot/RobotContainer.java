@@ -6,17 +6,18 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.StateMachine;
-import frc.robot.subsystems.StateMachine.RobotState;
+import frc.robot.subsystems.ExampleSubsystem;
 
-/** Creates the state machine and controllers, and connects buttons to commands and states. */
+/** Creates the subsystems and controllers, and connects buttons to commands. */
 public class RobotContainer {
 
-  private final StateMachine stateMachine = new StateMachine();
+  // --- Subsystems ---
+  // Create each subsystem here, once.
+  private final ExampleSubsystem example = new ExampleSubsystem();
 
+  // --- Controllers ---
   private final CommandXboxController driverController =
       new CommandXboxController(Constants.OI.DRIVER_CONTROLLER_PORT);
 
@@ -28,26 +29,10 @@ public class RobotContainer {
     // Hold A: run ExampleCommand. Letting go interrupts it, and its end() stops the motor.
     driverController
         .a()
-        .whileTrue(
-            new ExampleCommand(stateMachine.example, Constants.Example.COMMAND_VELOCITY_RPS));
-
-    // Hold B: ask the state machine for RUNNING. Let go: go back to IDLE.
-    driverController
-        .b()
-        .onTrue(new InstantCommand(() -> stateMachine.setWantedState(RobotState.RUNNING)))
-        .onFalse(new InstantCommand(() -> stateMachine.setWantedState(RobotState.IDLE)));
-  }
-
-  /** Puts the robot back in its starting state. Called when teleop starts. */
-  public void resetState() {
-    stateMachine.setWantedState(RobotState.IDLE);
+        .whileTrue(new ExampleCommand(example, Constants.Example.COMMAND_VELOCITY_RPS));
   }
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
-  }
-
-  public StateMachine getStateMachine() {
-    return stateMachine;
   }
 }

@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-import com.ctre.phoenix6.SignalLogger;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -15,8 +14,6 @@ public class Robot extends TimedRobot {
   private final RobotContainer m_robotContainer;
 
   public Robot() {
-    // Save CTRE logs (.hoot files) to the USB stick in the roboRIO, like the 2026 robot.
-    SignalLogger.setPath("/U/ctre-logs/");
     m_robotContainer = new RobotContainer();
   }
 
@@ -54,8 +51,6 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-
-    m_robotContainer.resetState();
   }
 
   @Override

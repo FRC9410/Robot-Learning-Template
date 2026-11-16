@@ -16,10 +16,10 @@ import frc.robot.Constants;
  *
  * <p>A subsystem is one part of the robot (intake, shooter, arm...). It owns that part's hardware
  * and has simple methods like {@link #setVelocity(double)} and {@link #stop()}. It should NOT decide
- * when to do things. That's the job of commands and the {@link StateMachine}.
+ * when to do things. That's the job of commands.
  *
  * <p>To make a new subsystem: copy this file, rename it, make a constants file for it, and create
- * it in {@link StateMachine}.
+ * it in {@code RobotContainer}.
  */
 public class ExampleSubsystem extends SubsystemBase {
 
