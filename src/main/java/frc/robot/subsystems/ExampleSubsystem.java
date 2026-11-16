@@ -18,8 +18,8 @@ import frc.robot.Constants;
  * and has simple methods like {@link #setVelocity(double)} and {@link #stop()}. It should NOT decide
  * when to do things. That's the job of commands.
  *
- * <p>To make a new subsystem: copy this file, rename it, make a constants file for it, and create
- * it in {@code RobotContainer}.
+ * <p>To make a new subsystem: copy this file, rename it, add a group for it in {@code Constants},
+ * and create it in {@code RobotContainer}.
  */
 public class ExampleSubsystem extends SubsystemBase {
 
